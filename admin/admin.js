@@ -65,7 +65,44 @@
     return `<textarea data-field="${esc(name)}">${esc(value)}</textarea>`;
   }
 
-  function setStatus(msg, type = '') {
+  function imagePreviewSrc(src) {
+    if (!src) return '';
+    if (/^https?:\/\//i.test(src)) return src;
+    if (src.startsWith('/')) return src;
+    return `/${src}`;
+  }
+
+  function isPhotoPath(src) {
+    return /\.(png|jpe?g|webp)$/i.test(src || '') || /^https?:\/\//i.test(src || '');
+  }
+
+  function isDeletableImage(src) {
+    if (!src) return false;
+    if (/^https?:\/\//i.test(src)) return true;
+    return src.startsWith('assets/images/uploads/');
+  }
+
+  function renderPhotoControls(src, deleteAttr) {
+    if (!isPhotoPath(src)) return '';
+    return `
+      <div class="photo-admin">
+        <img src="${imagePreviewSrc(src)}" alt="" class="photo-admin__thumb">
+        <button type="button" class="btn btn--sm btn--danger" ${deleteAttr}>Удалить фото</button>
+      </div>`;
+  }
+
+  async function deleteImageFile(src) {
+    if (!isDeletableImage(src)) return;
+    await api('/api/admin/delete-image', { method: 'POST', body: JSON.stringify({ path: src }) });
+  }
+
+  async function confirmPhotoDelete(src, message) {
+    const text = isDeletableImage(src)
+      ? (message || 'Удалить фото с сайта? Файл будет удалён с сервера.')
+      : (message || 'Убрать фото со страницы?');
+    return window.confirm(text);
+  }
+
     const el = $('save-status');
     el.textContent = msg;
     el.className = 'admin__status' + (type ? ` admin__status--${type}` : '');
@@ -144,6 +181,8 @@
           <input type="file" accept="image/*" id="hero-upload">
           <button type="button" class="btn btn--sm btn--ghost" id="hero-upload-btn">Загрузить фото</button>
         </div>
+        ${(isDeletableImage(h.image) || (h.image && h.image !== 'assets/images/hero-drinks.png'))
+          ? renderPhotoControls(h.image, 'id="hero-delete-photo"') : ''}
       </div>
       <div class="card">
         <h3 class="card__title">Промо «Пивной сет»</h3>
@@ -170,6 +209,7 @@
           ${field('Цена', `<input type="number" step="0.01" data-item-field="price" value="${item.price}">`)}
           ${field('Картинка (SVG имя или путь к фото)', `<input data-item-field="image" value="${esc(item.image)}">`)}
         </div>
+        ${renderPhotoControls(item.image, `data-delete-item-photo="${cat}:${index}"`)}
       </div>
     `;
   }
@@ -227,6 +267,7 @@
               </div>
               ${field('Состав', `<textarea data-set-field="desc">${esc(set.desc)}</textarea>`)}
               ${field('Картинка', `<input data-set-field="image" value="${esc(set.image)}">`)}
+              ${renderPhotoControls(set.image, `data-delete-set-photo="${i}"`)}
             </div>
           `).join('')}
         </div>
@@ -259,6 +300,7 @@
                 </div>
                 ${field('Иконка (запасная)', `<input data-drink-field="icon" value="${esc(item.icon || '')}">`)}
                 ${field('Фото (путь)', `<input data-drink-field="image" value="${esc(item.image || '')}">`)}
+                ${renderPhotoControls(item.image, `data-delete-drink-photo="${key}:${i}"`)}
               </div>
             `).join('')}
           </div>
@@ -292,6 +334,7 @@
                 ${field('Подпись', `<input data-promo-field="sub" value="${esc(promo.sub)}">`)}
                 ${field('Картинка', `<input data-promo-field="image" value="${esc(promo.image)}">`)}
               </div>
+              ${renderPhotoControls(promo.image, `data-delete-promo-photo="${i}"`)}
             </div>
           `).join('')}
         </div>
@@ -319,16 +362,16 @@
       <div class="card">
         <h3 class="card__title">Галерея</h3>
         <div class="gallery-admin" id="gallery-admin">
-          ${site.gallery.map((img, i) => `
+          ${site.gallery.length ? site.gallery.map((img, i) => `
             <div class="gallery-admin__item" data-gallery="${i}">
-              <img src="/${img.src}" alt="" class="gallery-admin__thumb">
+              <img src="${imagePreviewSrc(img.src)}" alt="" class="gallery-admin__thumb">
               <div>
                 ${field('Путь', `<input data-gallery-field="src" value="${esc(img.src)}">`)}
                 ${field('Alt', `<input data-gallery-field="alt" value="${esc(img.alt)}">`)}
               </div>
-              <button type="button" class="btn btn--sm btn--danger" data-delete-gallery="${i}">✕</button>
+              <button type="button" class="btn btn--sm btn--danger" data-delete-gallery="${i}">Удалить</button>
             </div>
-          `).join('')}
+          `).join('') : '<p class="gallery-admin__empty">Пока нет фото. Загрузите или добавьте слайд.</p>'}
         </div>
         <div class="upload-row" style="margin-top:12px">
           <input type="file" accept="image/*" id="gallery-upload">
@@ -552,10 +595,110 @@
     });
 
     root.querySelectorAll('[data-delete-gallery]').forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', async () => {
+        const i = Number(btn.dataset.deleteGallery);
         collectFromDom();
-        site.gallery.splice(Number(btn.dataset.deleteGallery), 1);
+        const img = site.gallery[i];
+        if (!img) return;
+        if (!(await confirmPhotoDelete(img.src, 'Удалить это фото из галереи?'))) return;
+        try {
+          if (isDeletableImage(img.src)) await deleteImageFile(img.src);
+          site.gallery.splice(i, 1);
+          render();
+          setStatus('Фото удалено', 'ok');
+        } catch (e) {
+          setStatus(e.message, 'err');
+        }
+      });
+    });
+
+    $('hero-delete-photo')?.addEventListener('click', async () => {
+      collectFromDom();
+      const src = site.hero.image;
+      if (!(await confirmPhotoDelete(src))) return;
+      try {
+        if (isDeletableImage(src)) await deleteImageFile(src);
+        site.hero.image = 'assets/images/hero-drinks.png';
         render();
+        setStatus('Фото удалено', 'ok');
+      } catch (e) {
+        setStatus(e.message, 'err');
+      }
+    });
+
+    root.querySelectorAll('[data-delete-item-photo]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const [cat, idx] = btn.dataset.deleteItemPhoto.split(':');
+        collectFromDom();
+        const item = site[cat][Number(idx)];
+        if (!item) return;
+        const src = item.image;
+        if (!(await confirmPhotoDelete(src))) return;
+        try {
+          if (isDeletableImage(src)) await deleteImageFile(src);
+          item.image = 'pizza-pepperoni';
+          render();
+          setStatus('Фото удалено', 'ok');
+        } catch (e) {
+          setStatus(e.message, 'err');
+        }
+      });
+    });
+
+    root.querySelectorAll('[data-delete-set-photo]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const i = Number(btn.dataset.deleteSetPhoto);
+        collectFromDom();
+        const set = site.sets[i];
+        if (!set) return;
+        const src = set.image;
+        if (!(await confirmPhotoDelete(src))) return;
+        try {
+          if (isDeletableImage(src)) await deleteImageFile(src);
+          set.image = 'beer-set';
+          render();
+          setStatus('Фото удалено', 'ok');
+        } catch (e) {
+          setStatus(e.message, 'err');
+        }
+      });
+    });
+
+    root.querySelectorAll('[data-delete-drink-photo]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const [key, idx] = btn.dataset.deleteDrinkPhoto.split(':');
+        collectFromDom();
+        const item = site.drinks[key].items[Number(idx)];
+        if (!item) return;
+        const src = item.image;
+        if (!(await confirmPhotoDelete(src))) return;
+        try {
+          if (isDeletableImage(src)) await deleteImageFile(src);
+          item.image = '';
+          render();
+          setStatus('Фото удалено', 'ok');
+        } catch (e) {
+          setStatus(e.message, 'err');
+        }
+      });
+    });
+
+    root.querySelectorAll('[data-delete-promo-photo]').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const i = Number(btn.dataset.deletePromoPhoto);
+        collectFromDom();
+        const promo = site.promotions[i];
+        if (!promo) return;
+        const src = promo.image;
+        if (!(await confirmPhotoDelete(src))) return;
+        try {
+          if (isDeletableImage(src)) await deleteImageFile(src);
+          promo.image = 'promo-beer';
+          render();
+          setStatus('Фото удалено', 'ok');
+        } catch (e) {
+          setStatus(e.message, 'err');
+        }
       });
     });
 
@@ -596,6 +739,7 @@
 
   async function initAdmin() {
     site = await api('/api/admin/site');
+    if (!Array.isArray(site.gallery)) site.gallery = [];
     render();
 
     document.querySelectorAll('.admin__nav-item').forEach(btn => {

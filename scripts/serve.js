@@ -242,6 +242,35 @@ async function handleApi(req, res, url) {
     return true;
   }
 
+  if (url.pathname === '/api/admin/delete-image' && req.method === 'POST') {
+    if (!isAuthed(req)) {
+      sendJson(res, 401, { error: 'Unauthorized' });
+      return true;
+    }
+    try {
+      const body = await readBody(req);
+      const imagePath = body.path || body.url || '';
+      if (!imagePath) {
+        sendJson(res, 400, { error: 'Не указан путь к файлу' });
+        return true;
+      }
+      if (/^https?:\/\//i.test(imagePath)) {
+        sendJson(res, 400, { error: 'Удаление внешних URL доступно только на Vercel' });
+        return true;
+      }
+      if (imagePath.startsWith('assets/images/uploads/')) {
+        const file = path.join(ROOT, imagePath);
+        if (fs.existsSync(file)) fs.unlinkSync(file);
+        sendJson(res, 200, { ok: true });
+        return true;
+      }
+      sendJson(res, 400, { error: 'Можно удалять только загруженные фото' });
+    } catch {
+      sendJson(res, 500, { error: 'Не удалось удалить файл' });
+    }
+    return true;
+  }
+
   return false;
 }
 
