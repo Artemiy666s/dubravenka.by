@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="DUBRAVENKA — летнее кафе. Меню, акции, контакты.">
+  <meta name="theme-color" content="#1a1d14">
+  <title>DUBRAVENKA — Меню</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="preload" as="image" href="assets/images/hero-drinks.png">
+  <link rel="icon" href="assets/svg/logo.svg" type="image/svg+xml">
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <header class="header" id="header">
+      <a href="#" class="header__logo" data-nav="home">DUBRAVENKA</a>
+      <button class="header__menu-btn" id="menu-toggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- Mobile overlay menu -->
+    <nav class="overlay-menu" id="overlay-menu" aria-hidden="true">
+      <button class="overlay-menu__close" id="menu-close" aria-label="Закрыть">&times;</button>
+      <ul class="overlay-menu__list">
+        <li><a href="#" data-nav="home">Меню</a></li>
+        <li><a href="#" data-nav="promotions">Акции</a></li>
+        <li><a href="#" data-nav="about">О нас</a></li>
+        <li><a href="#" data-nav="contacts">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <!-- Main content -->
+    <main class="main" id="main">
+
+      <!-- HOME -->
+      <section class="view view--active" id="view-home" data-view="home">
+        <div class="hero">
+          <div class="hero__text">
+            <p class="hero__subtitle" id="hero-subtitle">Вкусно и прохладно</p>
+            <h1 class="hero__title" id="hero-title">Меню</h1>
+            <div class="divider divider--center">
+              <span id="hero-divider">Освежающие напитки и любимые блюда</span>
+            </div>
+            <button class="btn btn--outline" data-scroll="categories" id="hero-cta">
+              <span id="hero-cta-text">Смотреть меню</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="hero__image">
+            <img id="hero-image" src="assets/images/hero-drinks.png" alt="Пиво и квас DUBRAVENKA" width="320" height="280" loading="eager" decoding="async">
+          </div>
+        </div>
+
+        <!-- Category nav -->
+        <div class="categories" id="categories">
+          <div class="categories__scroll" id="category-nav"></div>
+        </div>
+
+        <!-- Pizza preview on home -->
+        <div class="section-preview" id="home-preview"></div>
+
+        <!-- Beer set promo -->
+        <div class="promo-card" id="beer-promo">
+          <div class="promo-card__content">
+            <h3 class="promo-card__title" id="home-promo-title">Пивной сет</h3>
+            <div class="divider divider--small"><span id="home-promo-tagline">Лучшее к пиву</span></div>
+            <button class="btn btn--outline btn--sm" data-nav="sets">
+              Подробнее
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <div class="promo-card__image">
+            <img id="home-promo-image" src="assets/svg/beer-set.svg" alt="Пивной сет" width="400" height="220" loading="lazy" decoding="async">
+            <div class="promo-card__badge">
+              <span class="promo-card__price" id="home-promo-price">30 руб</span>
+              <span class="promo-card__weight" id="home-promo-weight">450 г</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY VIEWS -->
+      <section class="view" id="view-category" data-view="category">
+        <div class="category-header">
+          <button class="category-header__back" id="cat-back" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <h2 class="category-header__title" id="cat-title"></h2>
+          <button class="category-header__filter" aria-label="Фильтр" style="visibility:hidden">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M5 10h10M8 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="menu-list" id="category-list"></div>
+      </section>
+
+      <!-- SETS -->
+      <section class="view" id="view-sets" data-view="sets">
+        <div class="category-header">
+          <button class="category-header__back" data-nav="home" aria-label="Назад">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4l-6 6 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <h2 class="category-header__title">Сеты</h2>
+          <div style="width:20px"></div>
+        </div>
+        <div class="sets-list" id="sets-list"></div>
+      </section>
+
+      <!-- DRINKS -->
+      <section class="view" id="view-drinks" data-view="drinks">
+        <div class="drinks-hero">
+          <h2 class="drinks-hero__title">Напитки</h2>
+          <div class="divider divider--center"><span>Вкусно и прохладно</span></div>
+        </div>
+        <div class="drinks-sections" id="drinks-sections"></div>
+        <div class="drinks-footer">
+          <p id="drinks-footer-text">Освежающие напитки каждый день</p>
+          <div class="divider divider--diamond"></div>
+          <img src="assets/svg/logo-brand.svg" alt="DUBRAVENKA" class="drinks-footer__logo" width="200" height="80">
+        </div>
+      </section>
+
+      <!-- PROMOTIONS -->
+      <section class="view" id="view-promotions" data-view="promotions">
+        <h2 class="page-title">Акции</h2>
+        <div class="promotions-list" id="promotions-list"></div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="view" id="view-about" data-view="about">
+        <div class="about">
+          <img src="assets/svg/logo-brand.svg" alt="DUBRAVENKA" class="about__logo" width="200" height="80">
+          <p class="about__text" id="about-text">
+            Летнее кафе с уютной атмосферой, где можно отдохнуть в тени деревьев,
+            насладиться свежими блюдами и прохладительными напитками.
+            Мы готовим с любовью из качественных продуктов и рады каждому гостю.
+          </p>
+
+          <div class="about-gallery" id="about-gallery" aria-label="Фото кафе DUBRAVENKA" aria-live="polite">
+            <div class="about-gallery__slides" id="about-gallery-slides"></div>
+            <div class="about-gallery__dots" id="about-gallery-dots"></div>
+          </div>
+
+          <div class="about__features" id="about-features">
+            <div class="about__feature">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 16c4-8 20-8 24 0"/><path d="M8 20c2-4 14-4 16 0"/><circle cx="16" cy="24" r="1.5" fill="currentColor"/></svg>
+              <span>Wi-Fi<br>свободный</span>
+            </div>
+            <div class="about__feature">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="6" y="10" width="20" height="14" rx="2"/><path d="M10 10V8a6 6 0 0112 0v2"/></svg>
+              <span>Бронирование<br>столиков</span>
+            </div>
+            <div class="about__feature">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="4" y="8" width="24" height="16" rx="2"/><line x1="4" y1="14" x2="28" y2="14"/></svg>
+              <span>Оплата<br>картой</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACTS -->
+      <section class="view" id="view-contacts" data-view="contacts">
+        <div class="contacts">
+          <h2 class="page-title">Контакты</h2>
+          <div class="contacts__info">
+            <div class="contacts__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 3h4l2 5-2.5 1.5a11 11 0 005 5L14 12l5 2v4a2 2 0 01-2 2A15 15 0 013 5a2 2 0 012-2z"/></svg>
+              <a href="tel:+375291234567" id="contact-phone"></a>
+            </div>
+            <div class="contacts__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M10 2C6 2 3 5.5 3 9.5 3 14 10 19 10 19s7-5 7-9.5C17 5.5 14 2 10 2z"/><circle cx="10" cy="9.5" r="2.5"/></svg>
+              <span id="contact-address"></span>
+            </div>
+            <div class="contacts__item">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg>
+              <span id="contact-hours"></span>
+            </div>
+          </div>
+          <a class="btn btn--outline" id="contact-route" href="#" target="_blank" rel="noopener">
+            Построить маршрут
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <div class="contacts__map" id="contacts-map">
+            <div id="yandex-map" class="contacts__map-container" role="img" aria-label="Карта — DUBRAVENKA, г. Могилев, наб. реки Дубровенка, 2"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRINT MENU (full menu grid) -->
+      <section class="view" id="view-fullmenu" data-view="fullmenu">
+        <div class="fullmenu">
+          <h2 class="fullmenu__title">Меню</h2>
+          <div class="fullmenu__grid" id="fullmenu-grid"></div>
+          <div class="fullmenu__footer">
+            <img src="assets/svg/logo-brand.svg" alt="" width="180" height="72">
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Cart toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Cart panel -->
+    <div class="cart-backdrop" id="cart-backdrop" aria-hidden="true"></div>
+    <aside class="cart-panel" id="cart-panel" aria-hidden="true" aria-label="Корзина заказа">
+      <div class="cart-panel__header">
+        <h2 class="cart-panel__title">Заказ</h2>
+        <button class="cart-panel__close" id="cart-close" type="button" aria-label="Закрыть корзину">&times;</button>
+      </div>
+      <div class="cart-panel__body" id="cart-list"></div>
+      <div class="cart-panel__footer">
+        <div class="cart-panel__total">
+          <span>Итого</span>
+          <strong id="cart-total">0 руб</strong>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav" id="bottom-nav">
+      <button class="bottom-nav__item bottom-nav__item--active" data-nav="home" aria-label="Меню">
+        <span class="bottom-nav__icon-slot">
+          <svg class="bottom-nav__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="5.5" y="3.5" width="13" height="17" rx="2"/>
+            <line x1="8.5" y1="3.5" x2="8.5" y2="20.5"/>
+            <line x1="10.5" y1="8" x2="16.5" y2="8"/>
+            <line x1="10.5" y1="12" x2="17" y2="12"/>
+            <line x1="10.5" y1="16" x2="14.5" y2="16"/>
+          </svg>
+        </span>
+        <span class="bottom-nav__label">Меню</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="promotions" aria-label="Акции">
+        <span class="bottom-nav__icon-slot">
+          <svg class="bottom-nav__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4.2c1.1 2.1 3.2 3.4 3.2 5.9a3.2 3.2 0 1 1-6.4 0c0-2.5 2.1-3.8 3.2-5.9z"/>
+            <path d="M12 9.2c.5.9.8 1.6.8 2.3a1.2 1.2 0 1 1-1.6 0c0-.7.3-1.4.8-2.3z"/>
+            <line x1="7.5" y1="19.8" x2="16.5" y2="19.8"/>
+            <line x1="9.5" y1="21.2" x2="13.8" y2="17.4"/>
+            <line x1="14.5" y1="21.2" x2="10.2" y2="17.4"/>
+          </svg>
+        </span>
+        <span class="bottom-nav__label">Акции</span>
+      </button>
+      <button class="bottom-nav__item bottom-nav__item--cart" data-nav="cart" aria-label="Корзина">
+        <span class="bottom-nav__icon-slot bottom-nav__icon-slot--cart">
+          <svg class="bottom-nav__icon bottom-nav__icon--cart" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="13" y1="4.5" x2="13" y2="7.5"/>
+            <line x1="16" y1="3.5" x2="16" y2="6.5"/>
+            <line x1="19" y1="4.5" x2="19" y2="7.5"/>
+            <line x1="13" y1="9.5" x2="13" y2="14.5"/>
+            <line x1="16" y1="9.5" x2="16" y2="14.5"/>
+            <line x1="19" y1="9.5" x2="19" y2="14.5"/>
+            <line x1="12" y1="14.5" x2="20" y2="14.5"/>
+            <line x1="16" y1="14.5" x2="16" y2="28"/>
+          </svg>
+        </span>
+        <span class="bottom-nav__label bottom-nav__label--spacer" aria-hidden="true">&nbsp;</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="about" aria-label="О нас">
+        <span class="bottom-nav__icon-slot">
+          <svg class="bottom-nav__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.5"/>
+            <circle cx="12" cy="8.5" r="0.85" fill="currentColor" stroke="none"/>
+            <line x1="12" y1="10.5" x2="12" y2="16"/>
+          </svg>
+        </span>
+        <span class="bottom-nav__label">О нас</span>
+      </button>
+      <button class="bottom-nav__item" data-nav="contacts" aria-label="Контакты">
+        <span class="bottom-nav__icon-slot">
+          <svg class="bottom-nav__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 4.5C8.5 4.5 6 7.5 6 11c0 5.5 6 9.5 6 9.5s6-4 6-9.5c0-3.5-2.5-6.5-6-6.5z"/>
+            <circle cx="12" cy="11" r="2"/>
+          </svg>
+        </span>
+        <span class="bottom-nav__label">Контакты</span>
+      </button>
+    </nav>
+  </div>
+
+  <script src="js/menu-data.js"></script>
+  <script src="js/gallery.js" defer></script>
+  <script src="js/yandex-map.js" defer></script>
+  <script src="js/app.js" defer></script>
+</body>
+</html>

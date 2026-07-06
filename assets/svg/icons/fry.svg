@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Container -->
+  <path d="M14 18 h20 l-2 22 H16 L14 18z"/>
+  <path d="M12 18 h24"/>
+  <!-- Fries -->
+  <line x1="18" y1="14" x2="16" y2="22"/><line x1="22" y1="12" x2="21" y2="22"/>
+  <line x1="26" y1="13" x2="25" y2="22"/><line x1="30" y1="14" x2="29" y2="22"/>
+  <line x1="20" y1="15" x2="19" y2="21"/>
+</svg>

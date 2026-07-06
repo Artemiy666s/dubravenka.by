@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <radialGradient id="crust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8c850"/>
+      <stop offset="100%" stop-color="#c49a28"/>
+    </radialGradient>
+    <radialGradient id="sauce" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#d4a0a0"/>
+      <stop offset="100%" stop-color="#c08080"/>
+    </radialGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <circle cx="40" cy="42" r="30" fill="url(#crust)"/>
+  <circle cx="40" cy="42" r="26" fill="url(#sauce)" opacity="0.3"/>
+  <!-- Cheese blobs -->
+  <circle cx="30" cy="34" r="7" fill="#f5f0d8" opacity="0.9"/>
+  <circle cx="48" cy="32" r="6" fill="#f0e8c8"/>
+  <circle cx="36" cy="50" r="6.5" fill="#faf5e0"/>
+  <circle cx="50" cy="46" r="5.5" fill="#ece0b8"/>
+  <circle cx="28" cy="46" r="5" fill="#f5edd0"/>
+  <circle cx="44" cy="38" r="4" fill="#fff8e8"/>
+  <!-- Melted cheese strings -->
+  <path d="M33 41 Q36 44 33 47" stroke="#f0e0a0" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M47 38 Q50 42 48 46" stroke="#e8d898" stroke-width="0.8" fill="none" opacity="0.5"/>
+</svg>

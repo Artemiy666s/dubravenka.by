@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="cheese" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f8e878"/>
+      <stop offset="100%" stop-color="#e8c040"/>
+    </linearGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <rect x="18" y="36" width="38" height="10" rx="3" fill="url(#cheese)" transform="rotate(-8 37 41)"/>
+  <rect x="22" y="46" width="34" height="9" rx="3" fill="#f0d050" transform="rotate(5 39 50)"/>
+  <rect x="20" y="54" width="36" height="8" rx="2.5" fill="url(#cheese)" transform="rotate(-3 38 58)"/>
+  <!-- Melted cheese drips -->
+  <path d="M30 46 Q32 50 30 52" stroke="#e8c040" stroke-width="1.5" fill="none"/>
+  <path d="M48 48 Q50 52 48 54" stroke="#e8c040" stroke-width="1.2" fill="none"/>
+</svg>

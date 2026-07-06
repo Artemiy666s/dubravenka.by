@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="wing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c49050"/>
+      <stop offset="100%" stop-color="#a07030"/>
+    </linearGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <ellipse cx="32" cy="38" rx="16" ry="10" fill="url(#wing)" transform="rotate(-25 32 38)"/>
+  <ellipse cx="50" cy="42" rx="14" ry="9" fill="#b88040" transform="rotate(15 50 42)"/>
+  <ellipse cx="40" cy="52" rx="12" ry="8" fill="url(#wing)" transform="rotate(-5 40 52)"/>
+  <!-- Grill marks -->
+  <path d="M24 36 L38 40" stroke="#6a4020" stroke-width="0.8" opacity="0.5"/>
+  <path d="M44 38 L56 44" stroke="#6a4020" stroke-width="0.8" opacity="0.4"/>
+  <path d="M32 48 L46 54" stroke="#6a4020" stroke-width="0.7" opacity="0.4"/>
+  <!-- Bone tips -->
+  <circle cx="22" cy="34" r="2" fill="#f0e8d8" opacity="0.6"/>
+  <circle cx="58" cy="46" r="1.8" fill="#f0e8d8" opacity="0.5"/>
+</svg>

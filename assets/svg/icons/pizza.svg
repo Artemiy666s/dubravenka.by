@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pizza slice -->
+  <path d="M24 8 L10 38 Q24 42 38 38 Z"/>
+  <path d="M24 8 L24 38" opacity="0.5"/>
+  <circle cx="18" cy="28" r="1.8" fill="currentColor" stroke="none"/>
+  <circle cx="28" cy="24" r="1.5" fill="currentColor" stroke="none"/>
+  <circle cx="22" cy="32" r="1.2" fill="currentColor" stroke="none"/>
+  <circle cx="30" cy="30" r="1" fill="currentColor" stroke="none"/>
+</svg>

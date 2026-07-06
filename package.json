@@ -1,0 +1,18 @@
+{
+  "name": "dubravenka-menu",
+  "version": "1.0.0",
+  "description": "DUBRAVENKA — летнее кафе, монолитное меню",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.27.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "serve": "^14.2.4",
+    "sharp": "^0.35.3"
+  }
+}

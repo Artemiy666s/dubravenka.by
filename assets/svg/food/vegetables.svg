@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <!-- Zucchini -->
+  <ellipse cx="28" cy="36" rx="12" ry="5" fill="#5a8a40" transform="rotate(-20 28 36)"/>
+  <line x1="20" y1="36" x2="36" y2="36" stroke="#4a7030" stroke-width="0.5" opacity="0.5"/>
+  <!-- Pepper -->
+  <ellipse cx="52" cy="34" rx="8" ry="12" fill="#c0392b" transform="rotate(15 52 34)"/>
+  <path d="M52 22 Q54 20 52 18" stroke="#27ae60" stroke-width="1.5" fill="none"/>
+  <!-- Eggplant -->
+  <ellipse cx="36" cy="52" rx="7" ry="14" fill="#5a3060" transform="rotate(-10 36 52)"/>
+  <!-- Tomato -->
+  <circle cx="54" cy="52" r="8" fill="#c0392b"/>
+  <ellipse cx="54" cy="48" rx="3" ry="1.5" fill="#27ae60"/>
+  <!-- Grill marks -->
+  <line x1="22" y1="35" x2="34" y2="37" stroke="#3a5828" stroke-width="0.8" opacity="0.6"/>
+  <line x1="48" y1="32" x2="56" y2="36" stroke="#8b2020" stroke-width="0.6" opacity="0.5"/>
+</svg>

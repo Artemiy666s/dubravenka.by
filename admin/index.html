@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Админ — DUBRAVENKA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div id="login-screen" class="login">
+    <form id="login-form" class="login__card">
+      <h1 class="login__title">DUBRAVENKA</h1>
+      <p class="login__sub">Панель управления сайтом</p>
+      <label class="field">
+        <span>Пароль</span>
+        <input type="password" id="login-password" autocomplete="current-password" required>
+      </label>
+      <p id="login-error" class="login__error" hidden></p>
+      <button type="submit" class="btn btn--primary">Войти</button>
+    </form>
+  </div>
+
+  <div id="admin-app" class="admin" hidden>
+    <aside class="admin__sidebar">
+      <div class="admin__brand">DUBRAVENKA</div>
+      <nav class="admin__nav" id="admin-nav">
+        <button type="button" data-section="hero" class="admin__nav-item admin__nav-item--active">Главная</button>
+        <button type="button" data-section="menu" class="admin__nav-item">Меню</button>
+        <button type="button" data-section="sets" class="admin__nav-item">Сеты</button>
+        <button type="button" data-section="drinks" class="admin__nav-item">Напитки</button>
+        <button type="button" data-section="promotions" class="admin__nav-item">Акции</button>
+        <button type="button" data-section="about" class="admin__nav-item">О нас</button>
+        <button type="button" data-section="contacts" class="admin__nav-item">Контакты</button>
+        <button type="button" data-section="meta" class="admin__nav-item">Настройки</button>
+      </nav>
+      <button type="button" id="logout-btn" class="admin__logout">Выйти</button>
+    </aside>
+
+    <main class="admin__main">
+      <header class="admin__header">
+        <h2 id="section-title">Главная</h2>
+        <div class="admin__actions">
+          <a href="/" target="_blank" rel="noopener" class="btn btn--ghost">Открыть сайт</a>
+          <button type="button" id="save-btn" class="btn btn--primary">Сохранить</button>
+        </div>
+      </header>
+      <p id="save-status" class="admin__status" aria-live="polite"></p>
+      <div id="admin-content" class="admin__content"></div>
+    </main>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

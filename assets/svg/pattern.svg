@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+  <defs>
+    <pattern id="bg-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <g opacity="0.04" stroke="#d4c3a3" stroke-width="0.8" fill="none">
+        <path d="M15 20 L18 28 L12 28 Z"/>
+        <path d="M45 15 L42 25 L48 25 Z"/>
+        <ellipse cx="30" cy="45" rx="5" ry="3"/>
+        <path d="M8 42 L10 50 L6 50 Z"/>
+        <path d="M52 38 L50 46 L54 46 Z"/>
+      </g>
+    </pattern>
+  </defs>
+</svg>

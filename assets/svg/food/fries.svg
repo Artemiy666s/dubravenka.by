@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="fry" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d060"/>
+      <stop offset="100%" stop-color="#c49a28"/>
+    </linearGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <!-- Paper container -->
+  <path d="M18 48 L22 62 H58 L62 48 Z" fill="#c0392b" opacity="0.8"/>
+  <path d="M16 48 H64" stroke="#a02820" stroke-width="0.5"/>
+  <!-- Fries -->
+  <g stroke-linecap="round">
+    <line x1="28" y1="28" x2="24" y2="48" stroke="url(#fry)" stroke-width="3.5"/>
+    <line x1="36" y1="24" x2="33" y2="48" stroke="#e8c040" stroke-width="3"/>
+    <line x1="44" y1="26" x2="42" y2="48" stroke="url(#fry)" stroke-width="3.2"/>
+    <line x1="52" y1="30" x2="50" y2="48" stroke="#d4a830" stroke-width="2.8"/>
+    <line x1="32" y1="32" x2="29" y2="47" stroke="#e8c040" stroke-width="2.5"/>
+    <line x1="48" y1="28" x2="46" y2="47" stroke="#f0d050" stroke-width="2.8"/>
+  </g>
+  <!-- Salt crystals -->
+  <circle cx="38" cy="42" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="44" cy="38" r="0.6" fill="#fff" opacity="0.25"/>
+</svg>

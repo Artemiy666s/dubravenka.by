@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Left mug -->
+  <path d="M10 18 h10 v16 a3 3 0 0 0 3 3 h0 a3 3 0 0 0 3-3 V18"/>
+  <ellipse cx="18" cy="18" rx="6" ry="2"/>
+  <path d="M23 22 h3 v6"/>
+  <!-- Right mug -->
+  <path d="M25 18 h10 v16 a3 3 0 0 0 3 3 h0 a3 3 0 0 0 3-3 V18"/>
+  <ellipse cx="33" cy="18" rx="6" ry="2"/>
+  <path d="M22 22 h-3 v6"/>
+  <!-- Clink lines -->
+  <path d="M22 14 l4-4"/><path d="M26 14 l-4-4"/>
+</svg>

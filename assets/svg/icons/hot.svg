@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pot body -->
+  <path d="M12 22 h24 v14 a4 4 0 0 1-4 4 H16 a4 4 0 0 1-4-4 V22z"/>
+  <ellipse cx="24" cy="22" rx="12" ry="3"/>
+  <!-- Handles -->
+  <path d="M8 24 h4"/><path d="M36 24 h4"/>
+  <!-- Steam -->
+  <path d="M18 14 c0-3 1-5 1-7"/><path d="M24 12 c0-4 0-6 0-9"/><path d="M30 14 c0-3-1-5-1-7"/>
+  <!-- Lid line -->
+  <path d="M14 18 h20" opacity="0.4"/>
+</svg>

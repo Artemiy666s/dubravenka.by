@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 300" fill="none">
+  <defs>
+    <linearGradient id="cola" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0%" stop-color="#4a2010"/>
+      <stop offset="40%" stop-color="#2d1208"/>
+      <stop offset="100%" stop-color="#1a0a04"/>
+    </linearGradient>
+    <linearGradient id="beer" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d060"/>
+      <stop offset="60%" stop-color="#d4a830"/>
+      <stop offset="100%" stop-color="#a07818"/>
+    </linearGradient>
+    <linearGradient id="foam" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf6ee"/>
+      <stop offset="100%" stop-color="#e8dcc0"/>
+    </linearGradient>
+    <linearGradient id="glass-shine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#fff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4c3a3" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#d4c3a3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Decorative circle -->
+  <circle cx="210" cy="155" r="115" stroke="#d4c3a3" stroke-width="0.7" opacity="0.3"/>
+  <circle cx="210" cy="155" r="95" fill="url(#bg-glow)"/>
+
+  <!-- Mint leaf behind cola -->
+  <path d="M72 95 Q85 80 95 95 Q88 105 72 100Z" fill="#3a5a30" opacity="0.7"/>
+  <path d="M72 100 Q80 108 88 102" stroke="#4a7040" stroke-width="0.6" fill="none"/>
+
+  <!-- Cola glass -->
+  <path d="M72 52 L58 228 Q88 236 102 228 L88 52Z" fill="url(#cola)" stroke="#d4c3a3" stroke-width="0.8"/>
+  <path d="M72 52 L88 52" stroke="#d4c3a3" stroke-width="0.8"/>
+  <ellipse cx="80" cy="54" rx="10" ry="3" fill="#3a1810"/>
+  <!-- Ice cubes -->
+  <rect x="68" y="110" width="10" height="10" rx="2" fill="#fff" opacity="0.08" transform="rotate(-15 73 115)"/>
+  <rect x="78" y="140" width="8" height="8" rx="1.5" fill="#fff" opacity="0.06" transform="rotate(10 82 144)"/>
+  <rect x="70" y="170" width="9" height="9" rx="2" fill="#fff" opacity="0.05"/>
+  <!-- Condensation -->
+  <path d="M58 228 Q88 236 102 228" fill="none" stroke="#d4c3a3" stroke-width="0.5" opacity="0.4"/>
+  <path d="M80 52 L80 228" stroke="url(#glass-shine)" stroke-width="6"/>
+
+  <!-- Beer glass (tall pilsner) -->
+  <path d="M188 28 L176 238 Q210 246 244 238 L232 28Z" fill="url(#beer)" stroke="#d4c3a3" stroke-width="0.8"/>
+  <!-- Foam head -->
+  <ellipse cx="210" cy="32" rx="24" ry="5" fill="#f5edd8" stroke="#d4c3a3" stroke-width="0.6"/>
+  <ellipse cx="210" cy="48" rx="22" ry="14" fill="url(#foam)"/>
+  <circle cx="198" cy="44" r="5" fill="#fff" opacity="0.45"/>
+  <circle cx="212" cy="40" r="4" fill="#fff" opacity="0.35"/>
+  <circle cx="220" cy="48" r="3.5" fill="#fff" opacity="0.3"/>
+  <circle cx="204" cy="52" r="2.5" fill="#fff" opacity="0.25"/>
+  <!-- Glass shine -->
+  <path d="M200 40 L194 220" stroke="url(#glass-shine)" stroke-width="8"/>
+  <!-- Logo on beer glass -->
+  <g transform="translate(196, 130)" opacity="0.85">
+    <path d="M8 0c0-2 1-3 2-4" stroke="#8b6010" stroke-width="0.8" fill="none"/>
+    <path d="M12 0c0-2-1-3-2-4" stroke="#8b6010" stroke-width="0.8" fill="none"/>
+    <ellipse cx="10" cy="2" rx="5" ry="2" stroke="#8b6010" stroke-width="0.7" fill="none"/>
+    <line x1="10" y1="4" x2="10" y2="10" stroke="#8b6010" stroke-width="0.8"/>
+    <text x="10" y="20" text-anchor="middle" fill="#8b6010" font-family="sans-serif" font-size="5" letter-spacing="1.5" font-weight="500">DUBRAVENKA</text>
+  </g>
+  <!-- Bubbles in beer -->
+  <circle cx="200" cy="100" r="1.5" fill="#fff" opacity="0.2"/>
+  <circle cx="218" cy="130" r="1" fill="#fff" opacity="0.15"/>
+  <circle cx="205" cy="160" r="1.2" fill="#fff" opacity="0.12"/>
+  <circle cx="215" cy="190" r="0.8" fill="#fff" opacity="0.1"/>
+
+  <!-- Shadows -->
+  <ellipse cx="80" cy="232" rx="24" ry="4" fill="#000" opacity="0.25"/>
+  <ellipse cx="210" cy="242" rx="32" ry="5" fill="#000" opacity="0.25"/>
+</svg>

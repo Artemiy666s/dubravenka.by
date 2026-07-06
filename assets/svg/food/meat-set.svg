@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" fill="none">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6b4a28"/>
+      <stop offset="100%" stop-color="#3a2410"/>
+    </linearGradient>
+    <linearGradient id="meat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5030"/>
+      <stop offset="100%" stop-color="#a06040"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="150" rx="10" fill="#1a1d14"/>
+  <ellipse cx="100" cy="100" rx="80" ry="40" fill="url(#wood)"/>
+  <rect x="40" y="60" width="30" height="8" rx="3" fill="url(#meat)" transform="rotate(-5 55 64)"/>
+  <rect x="50" y="72" width="35" height="8" rx="3" fill="#7a4828" transform="rotate(3 67 76)"/>
+  <ellipse cx="120" cy="70" rx="16" ry="10" fill="#d4a060"/>
+  <ellipse cx="130" cy="85" rx="14" ry="9" fill="#c49050"/>
+  <ellipse cx="70" cy="88" rx="12" ry="8" fill="#e74c3c" opacity="0.7"/>
+  <ellipse cx="110" cy="95" rx="18" ry="6" fill="#f39c12" opacity="0.6"/>
+  <circle cx="90" cy="78" r="8" fill="#27ae60" opacity="0.5"/>
+</svg>

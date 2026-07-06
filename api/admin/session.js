@@ -1,0 +1,9 @@
+const { sendJson, isAuthed } = require('../_lib');
+
+module.exports = async (req, res) => {
+  if (req.method !== 'GET') {
+    sendJson(res, 405, { error: 'Method not allowed' });
+    return;
+  }
+  sendJson(res, 200, { authed: isAuthed(req) });
+};

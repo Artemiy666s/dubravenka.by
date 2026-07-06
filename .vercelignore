@@ -1,0 +1,5 @@
+test-results
+playwright-report
+playwright
+tests
+scripts/optimize-food-images.js

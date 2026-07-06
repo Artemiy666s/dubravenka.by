@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <radialGradient id="crust" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c49a30"/>
+      <stop offset="100%" stop-color="#8b6518"/>
+    </radialGradient>
+    <radialGradient id="sauce" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#c0392b"/>
+      <stop offset="100%" stop-color="#8b2518"/>
+    </radialGradient>
+    <radialGradient id="cheese" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5e8a0"/>
+      <stop offset="100%" stop-color="#e8d060"/>
+    </radialGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <circle cx="40" cy="42" r="30" fill="url(#crust)"/>
+  <circle cx="40" cy="42" r="26" fill="url(#sauce)"/>
+  <circle cx="40" cy="42" r="24" fill="url(#cheese)" opacity="0.6"/>
+  <!-- Bacon -->
+  <path d="M26 36 Q34 32 42 36 Q50 40 54 34" stroke="#a05040" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M28 44 Q36 40 44 44 Q52 48 56 42" stroke="#b06050" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Sausage -->
+  <ellipse cx="32" cy="50" rx="5" ry="3" fill="#8b4030" transform="rotate(-15 32 50)"/>
+  <ellipse cx="48" cy="48" rx="4.5" ry="2.8" fill="#9b4838" transform="rotate(20 48 48)"/>
+  <!-- Ham -->
+  <ellipse cx="38" cy="34" rx="6" ry="4" fill="#d4a0a0" transform="rotate(-10 38 34)"/>
+  <!-- Pepperoni -->
+  <ellipse cx="50" cy="40" rx="4" ry="3" fill="#a02020"/>
+</svg>

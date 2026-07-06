@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <ellipse cx="40" cy="50" rx="24" ry="14" fill="#3a7a30" opacity="0.5"/>
+  <!-- Tomato -->
+  <circle cx="30" cy="40" r="8" fill="#c0392b"/>
+  <ellipse cx="30" cy="36" rx="2" ry="1" fill="#27ae60"/>
+  <!-- Cucumber -->
+  <ellipse cx="48" cy="38" rx="10" ry="5" fill="#3a8a40" transform="rotate(-15 48 38)"/>
+  <line x1="42" y1="38" x2="54" y2="38" stroke="#2a7030" stroke-width="0.5" opacity="0.5"/>
+  <!-- Feta -->
+  <rect x="36" y="46" width="8" height="7" rx="1" fill="#f0f0f0" transform="rotate(10 40 49)"/>
+  <rect x="48" y="44" width="7" height="6" rx="1" fill="#e8e8e8" transform="rotate(-8 51 47)"/>
+  <!-- Olives -->
+  <ellipse cx="26" cy="50" rx="4" ry="5" fill="#2c3e50"/>
+  <ellipse cx="54" cy="50" rx="3.5" ry="4.5" fill="#34495e"/>
+  <!-- Onion ring -->
+  <circle cx="40" cy="44" r="5" stroke="#d4a0c0" stroke-width="1.5" fill="none" opacity="0.6"/>
+</svg>

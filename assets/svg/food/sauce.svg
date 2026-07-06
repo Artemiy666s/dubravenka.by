@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <radialGradient id="bowl" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#3a3028"/>
+      <stop offset="100%" stop-color="#2a2018"/>
+    </radialGradient>
+  </defs>
+  <rect width="80" height="80" rx="10" fill="#1a1d14"/>
+  <ellipse cx="40" cy="48" rx="22" ry="14" fill="url(#bowl)"/>
+  <!-- Sauce blobs -->
+  <circle cx="32" cy="42" r="10" fill="#c0392b" opacity="0.85"/>
+  <circle cx="48" cy="44" r="9" fill="#e74c3c" opacity="0.7"/>
+  <circle cx="40" cy="50" r="8" fill="#f5c842" opacity="0.8"/>
+  <!-- Sauce highlights -->
+  <circle cx="30" cy="40" r="3" fill="#e74c3c" opacity="0.4"/>
+  <circle cx="46" cy="42" r="2.5" fill="#ff6b5a" opacity="0.3"/>
+</svg>
