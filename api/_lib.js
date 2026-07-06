@@ -35,6 +35,20 @@ function parseCookies(header) {
 }
 
 function readBody(req) {
+  const body = req.body;
+  if (body !== undefined && body !== null && body !== '') {
+    if (typeof body === 'object' && !Buffer.isBuffer(body)) {
+      return Promise.resolve(body);
+    }
+    const raw = Buffer.isBuffer(body) ? body.toString('utf8') : String(body);
+    if (!raw) return Promise.resolve({});
+    try {
+      return Promise.resolve(JSON.parse(raw));
+    } catch {
+      return Promise.reject(new Error('Invalid JSON'));
+    }
+  }
+
   return new Promise((resolve, reject) => {
     const chunks = [];
     req.on('data', chunk => chunks.push(chunk));

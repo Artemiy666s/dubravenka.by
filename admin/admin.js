@@ -590,7 +590,9 @@
   $('login-form').addEventListener('submit', async e => {
     e.preventDefault();
     const err = $('login-error');
+    const btn = e.target.querySelector('button[type="submit"]');
     err.hidden = true;
+    if (btn) btn.disabled = true;
     try {
       await api('/api/admin/login', {
         method: 'POST',
@@ -598,15 +600,19 @@
       });
       await initAdmin();
       showAdmin();
-    } catch {
-      err.textContent = 'Неверный пароль';
+    } catch (e) {
+      err.textContent = e.message === 'Неверный пароль' || e.message === 'Bad request'
+        ? 'Неверный пароль'
+        : (e.message || 'Ошибка входа');
       err.hidden = false;
+    } finally {
+      if (btn) btn.disabled = false;
     }
   });
 
   checkSession().then(authed => {
     if (authed) {
-      initAdmin().then(showAdmin);
+      initAdmin().then(showAdmin).catch(() => showLogin());
     }
-  });
+  }).catch(() => {});
 })();
