@@ -87,7 +87,7 @@ test.describe('DUBRAVENKA Menu Site', () => {
     await page.locator('.bottom-nav [data-nav="about"]').click();
     await expect(page.locator('#view-about')).toHaveClass(/view--active/);
     await expect(page.locator('.about__text')).toBeVisible();
-    await expect(page.locator('.about-gallery__slide')).toHaveCount(8);
+    await expect(page.locator('.about-gallery__slide')).toHaveCount(2);
     await expect(page.locator('.about-gallery__slide--active')).toHaveCount(1);
     const features = page.locator('.about__feature');
     await expect(features).toHaveCount(3);

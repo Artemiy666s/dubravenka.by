@@ -24,14 +24,8 @@
     ]
   },
   "gallery": [
-    { "src": "assets/images/gallery/gallery-01.png", "alt": "Летняя терраса DUBRAVENKA" },
-    { "src": "assets/images/gallery/gallery-02.png", "alt": "Веранда кафе DUBRAVENKA" },
-    { "src": "assets/images/gallery/gallery-03.png", "alt": "Кафе у набережной Дубровенки" },
-    { "src": "assets/images/gallery/gallery-04.png", "alt": "Цветы на террасе" },
-    { "src": "assets/images/gallery/gallery-05.png", "alt": "Зал кафе" },
-    { "src": "assets/images/gallery/gallery-06.png", "alt": "Интерьер DUBRAVENKA" },
-    { "src": "assets/images/gallery/gallery-07.png", "alt": "Барная стойка" },
-    { "src": "assets/images/gallery/gallery-08.png", "alt": "Деревянная мебель в зале" }
+    { "src": "assets/images/gallery/gallery-01.jpg", "alt": "DUBRAVENKA — grill и пицца" },
+    { "src": "assets/images/gallery/gallery-02.jpg", "alt": "Летняя терраса DUBRAVENKA" }
   ],
   "drinksFooter": "Освежающие напитки каждый день",
   "categories": [
