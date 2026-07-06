@@ -2,31 +2,35 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1a1d14">
   <title>Админ — DUBRAVENKA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="admin.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/svg/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/admin/admin.css">
 </head>
 <body>
   <div id="login-screen" class="login">
     <form id="login-form" class="login__card">
       <h1 class="login__title">DUBRAVENKA</h1>
-      <p class="login__sub">Панель управления сайтом</p>
+      <div class="login__divider"><span>Панель управления</span></div>
       <label class="field">
         <span>Пароль</span>
         <input type="password" id="login-password" autocomplete="current-password" required>
       </label>
       <p id="login-error" class="login__error" hidden></p>
       <button type="submit" class="btn btn--primary">Войти</button>
+      <a href="/" class="login__back">← На сайт</a>
     </form>
   </div>
 
   <div id="admin-app" class="admin" hidden>
     <aside class="admin__sidebar">
       <div class="admin__brand">DUBRAVENKA</div>
+      <div class="admin__divider"><span>Админ</span></div>
       <nav class="admin__nav" id="admin-nav">
         <button type="button" data-section="hero" class="admin__nav-item admin__nav-item--active">Главная</button>
         <button type="button" data-section="menu" class="admin__nav-item">Меню</button>
@@ -37,6 +41,7 @@
         <button type="button" data-section="contacts" class="admin__nav-item">Контакты</button>
         <button type="button" data-section="meta" class="admin__nav-item">Настройки</button>
       </nav>
+      <a href="/" target="_blank" rel="noopener" class="admin__site-link">Открыть сайт</a>
       <button type="button" id="logout-btn" class="admin__logout">Выйти</button>
     </aside>
 
@@ -44,7 +49,6 @@
       <header class="admin__header">
         <h2 id="section-title">Главная</h2>
         <div class="admin__actions">
-          <a href="/" target="_blank" rel="noopener" class="btn btn--ghost">Открыть сайт</a>
           <button type="button" id="save-btn" class="btn btn--primary">Сохранить</button>
         </div>
       </header>
@@ -53,6 +57,6 @@
     </main>
   </div>
 
-  <script src="admin.js"></script>
+  <script src="/admin/admin.js"></script>
 </body>
 </html>
