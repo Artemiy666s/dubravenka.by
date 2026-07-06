@@ -408,7 +408,7 @@
 
       }
 
-      const menuViews = currentView === 'home' || currentView === 'category' || currentView === 'sets' || currentView === 'drinks';
+      const menuViews = currentView === 'home' || currentView === 'category' || currentView === 'sets' || currentView === 'drinks' || currentView === 'fullmenu';
 
       btn.classList.toggle('bottom-nav__item--active',
 
@@ -815,72 +815,55 @@
 
 
 
+  function getFullMenuSections() {
+    const menuCats = ['pizza', 'hot', 'fry', 'salads'];
+    const sections = [];
+
+    DATA.categories.forEach(cat => {
+      if (menuCats.includes(cat.id)) {
+        sections.push({ title: cat.name, items: DATA[cat.id] });
+        return;
+      }
+
+      if (cat.id === 'sets') {
+        sections.push({
+          title: cat.name,
+          items: DATA.sets.map(set => ({
+            id: set.id,
+            name: set.name,
+            desc: `${set.weight}. ${set.desc}`,
+            price: set.price,
+            image: set.image,
+          })),
+        });
+        return;
+      }
+
+      if (cat.id === 'drinks') {
+        const items = [];
+        for (const key of ['beer', 'kvass', 'soft']) {
+          items.push(...DATA.drinks[key].items);
+        }
+        sections.push({ title: cat.name, items });
+      }
+    });
+
+    return sections;
+  }
+
   function renderFullMenu() {
-
     const grid = $('#fullmenu-grid');
+    if (!grid) return;
 
-    const cats = ['pizza', 'hot', 'fry', 'salads'];
-
-
-
-    let html = cats.map(cat => {
-
-      const items = DATA[cat];
-
-      return `
-
-        <div class="fullmenu__section">
-
-          <h3 class="fullmenu__section-title">${categoryName(cat)}</h3>
-
-          ${items.map(item => `
-
-            <div class="fullmenu__item">
-
-              <span class="fullmenu__item-name">${item.name}</span>
-
-              <span class="fullmenu__item-price">${formatPrice(item.price)}</span>
-
-            </div>
-
-          `).join('')}
-
+    grid.innerHTML = getFullMenuSections().map(section => `
+      <div class="fullmenu__section">
+        <div class="section-header">
+          <h3 class="section-header__title">${section.title}</h3>
         </div>
-
-      `;
-
-    }).join('');
-
-
-
-    html += `
-
-      <div class="fullmenu__section fullmenu__sets">
-
-        <h3 class="fullmenu__section-title">Сеты</h3>
-
-        ${DATA.sets.map(set => `
-
-          <div class="fullmenu__item">
-
-            <span class="fullmenu__item-name">${set.name} (${set.weight})</span>
-
-            <span class="fullmenu__item-price">${formatPrice(set.price)}</span>
-
-          </div>
-
-          <div class="fullmenu__item-desc">(${set.desc})</div>
-
-        `).join('')}
-
+        <div class="section-divider"></div>
+        ${section.items.map(renderMenuItem).join('')}
       </div>
-
-    `;
-
-
-
-    grid.innerHTML = html;
-
+    `).join('');
   }
 
 
@@ -1046,6 +1029,8 @@
 
 
     $('#cat-back').addEventListener('click', () => navigate('home'));
+
+    $('#fullmenu-back')?.addEventListener('click', () => navigate('home'));
 
 
 

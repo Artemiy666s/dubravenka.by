@@ -13,11 +13,22 @@ test.describe('DUBRAVENKA Menu Site', () => {
     await expect(page.locator('link[rel="stylesheet"][href="css/styles.css"]')).toHaveCount(1);
   });
 
+  test('hero opens full menu page', async ({ page }) => {
+    await page.locator('#hero-cta').click();
+    await expect(page.locator('#view-fullmenu')).toHaveClass(/view--active/);
+    await expect(page.locator('#fullmenu-grid .section-header__title').first()).toHaveText('Пицца');
+    await expect(page.locator('#fullmenu-grid .section-header__title').nth(1)).toHaveText('Напитки');
+    await expect(page.locator('#fullmenu-grid .menu-item')).toHaveCount(31);
+    await page.locator('#fullmenu-back').click();
+    await expect(page.locator('#view-home')).toHaveClass(/view--active/);
+  });
+
   test('category navigation renders all categories', async ({ page }) => {
     const cards = page.locator('.category-card');
     await expect(cards).toHaveCount(6);
     await expect(cards.nth(0)).toContainText('Пицца');
-    await expect(cards.nth(5)).toContainText('Напитки');
+    await expect(cards.nth(1)).toContainText('Напитки');
+    await expect(cards.nth(5)).toContainText('Сеты');
     await expect(cards.nth(0).locator('.category-card__frame')).toBeVisible();
   });
 
@@ -71,7 +82,7 @@ test.describe('DUBRAVENKA Menu Site', () => {
   test('bottom nav switches to about', async ({ page }) => {
     await page.locator('.bottom-nav [data-nav="about"]').click();
     await expect(page.locator('#view-about')).toHaveClass(/view--active/);
-    await expect(page.locator('.about__logo')).toHaveAttribute('alt', 'DUBRAVENKA');
+    await expect(page.locator('.about__text')).toBeVisible();
     await expect(page.locator('.about-gallery__slide')).toHaveCount(8);
     await expect(page.locator('.about-gallery__slide--active')).toHaveCount(1);
     const features = page.locator('.about__feature');

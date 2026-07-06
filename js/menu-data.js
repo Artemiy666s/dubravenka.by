@@ -1,11 +1,11 @@
 window.MENU_DATA = {
   categories: [
     { id: 'pizza', name: 'Пицца', icon: 'pizza' },
+    { id: 'drinks', name: 'Напитки', icon: 'drinks' },
     { id: 'hot', name: 'Горячее', icon: 'hot' },
     { id: 'fry', name: 'Фритюр', icon: 'fry' },
     { id: 'salads', name: 'Салаты', icon: 'salads' },
-    { id: 'sets', name: 'Сеты', icon: 'sets' },
-    { id: 'drinks', name: 'Напитки', icon: 'drinks' }
+    { id: 'sets', name: 'Сеты', icon: 'sets' }
   ],
 
   pizza: [
