@@ -1226,7 +1226,9 @@ a {
 .contacts__map-container {
   width: 100%;
   height: 280px;
-  background: var(--bg-card);
+  min-height: 280px;
+  background: #e5e3df;
+  position: relative;
 }
 
 .contacts__map-fallback {
@@ -1416,6 +1418,15 @@ a {
   visibility: hidden;
 }
 
+.bottom-nav__item--cart .bottom-nav__icon-slot {
+  height: 26px;
+}
+
+.bottom-nav__item--cart .bottom-nav__icon--cart {
+  width: 24px;
+  height: 24px;
+}
+
 .bottom-nav__item--active {
   color: var(--accent);
 }
@@ -1425,6 +1436,11 @@ a {
 }
 
 /* Cart panel */
+.cart-backdrop[hidden],
+.cart-panel[hidden] {
+  display: none !important;
+}
+
 .cart-backdrop {
   position: fixed;
   inset: 0;

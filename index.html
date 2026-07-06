@@ -206,22 +206,6 @@
     <!-- Cart toast -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <!-- Cart panel -->
-    <div class="cart-backdrop" id="cart-backdrop" aria-hidden="true"></div>
-    <aside class="cart-panel" id="cart-panel" aria-hidden="true" aria-label="Корзина заказа">
-      <div class="cart-panel__header">
-        <h2 class="cart-panel__title">Заказ</h2>
-        <button class="cart-panel__close" id="cart-close" type="button" aria-label="Закрыть корзину">&times;</button>
-      </div>
-      <div class="cart-panel__body" id="cart-list"></div>
-      <div class="cart-panel__footer">
-        <div class="cart-panel__total">
-          <span>Итого</span>
-          <strong id="cart-total">0 руб</strong>
-        </div>
-      </div>
-    </aside>
-
     <!-- Bottom navigation -->
     <nav class="bottom-nav" id="bottom-nav">
       <button class="bottom-nav__item bottom-nav__item--active" data-nav="home" aria-label="Меню">
@@ -248,7 +232,7 @@
         </span>
         <span class="bottom-nav__label">Акции</span>
       </button>
-      <button class="bottom-nav__item bottom-nav__item--cart" data-nav="cart" aria-label="Корзина">
+      <button type="button" class="bottom-nav__item bottom-nav__item--cart" id="cart-toggle" aria-label="Заказ">
         <span class="bottom-nav__icon-slot bottom-nav__icon-slot--cart">
           <svg class="bottom-nav__icon bottom-nav__icon--cart" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="13" y1="4.5" x2="13" y2="7.5"/>
@@ -261,7 +245,7 @@
             <line x1="16" y1="14.5" x2="16" y2="28"/>
           </svg>
         </span>
-        <span class="bottom-nav__label bottom-nav__label--spacer" aria-hidden="true">&nbsp;</span>
+        <span class="bottom-nav__label">Заказ</span>
       </button>
       <button class="bottom-nav__item" data-nav="about" aria-label="О нас">
         <span class="bottom-nav__icon-slot">
@@ -284,6 +268,22 @@
       </button>
     </nav>
   </div>
+
+  <!-- Cart panel (outside #app — full-screen overlay) -->
+  <div class="cart-backdrop" id="cart-backdrop" hidden aria-hidden="true"></div>
+  <aside class="cart-panel" id="cart-panel" hidden aria-hidden="true" aria-label="Заказ">
+    <div class="cart-panel__header">
+      <h2 class="cart-panel__title">Заказ</h2>
+      <button class="cart-panel__close" id="cart-close" type="button" aria-label="Закрыть заказ">&times;</button>
+    </div>
+    <div class="cart-panel__body" id="cart-list"></div>
+    <div class="cart-panel__footer">
+      <div class="cart-panel__total">
+        <span>Итого</span>
+        <strong id="cart-total">0 руб</strong>
+      </div>
+    </div>
+  </aside>
 
   <script src="js/menu-data.js"></script>
   <script src="js/gallery.js" defer></script>

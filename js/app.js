@@ -344,13 +344,21 @@
 
     renderCart();
 
-    $('#cart-panel')?.classList.add('cart-panel--open');
+    const backdrop = $('#cart-backdrop');
 
-    $('#cart-backdrop')?.classList.add('cart-backdrop--visible');
+    const panel = $('#cart-panel');
 
-    $('#cart-panel')?.setAttribute('aria-hidden', 'false');
+    backdrop?.removeAttribute('hidden');
 
-    $('#cart-backdrop')?.setAttribute('aria-hidden', 'false');
+    panel?.removeAttribute('hidden');
+
+    panel?.classList.add('cart-panel--open');
+
+    backdrop?.classList.add('cart-backdrop--visible');
+
+    panel?.setAttribute('aria-hidden', 'false');
+
+    backdrop?.setAttribute('aria-hidden', 'false');
 
     updateBottomNavActive();
 
@@ -362,13 +370,21 @@
 
     cartOpen = false;
 
-    $('#cart-panel')?.classList.remove('cart-panel--open');
+    const backdrop = $('#cart-backdrop');
 
-    $('#cart-backdrop')?.classList.remove('cart-backdrop--visible');
+    const panel = $('#cart-panel');
 
-    $('#cart-panel')?.setAttribute('aria-hidden', 'true');
+    panel?.classList.remove('cart-panel--open');
 
-    $('#cart-backdrop')?.setAttribute('aria-hidden', 'true');
+    backdrop?.classList.remove('cart-backdrop--visible');
+
+    panel?.setAttribute('aria-hidden', 'true');
+
+    backdrop?.setAttribute('aria-hidden', 'true');
+
+    panel?.setAttribute('hidden', '');
+
+    backdrop?.setAttribute('hidden', '');
 
     updateBottomNavActive();
 
@@ -382,9 +398,11 @@
 
       const nav = btn.dataset.nav;
 
+      const isCart = btn.id === 'cart-toggle';
+
       if (cartOpen) {
 
-        btn.classList.toggle('bottom-nav__item--active', nav === 'cart');
+        btn.classList.toggle('bottom-nav__item--active', isCart);
 
         return;
 
@@ -931,16 +949,6 @@
 
         const view = nav.dataset.nav;
 
-        if (view === 'cart') {
-
-          if (cartOpen) closeCart();
-
-          else openCart();
-
-          return;
-
-        }
-
         if (view === 'sets') navigate('sets');
 
         else navigate(view);
@@ -1057,6 +1065,18 @@
 
     $('#cart-backdrop')?.addEventListener('click', closeCart);
 
+    $('#cart-toggle')?.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      e.stopPropagation();
+
+      if (cartOpen) closeCart();
+
+      else openCart();
+
+    });
+
   }
 
 
@@ -1090,6 +1110,8 @@
     renderAll();
 
     bindEvents();
+
+    closeCart();
 
     navigate('home');
 

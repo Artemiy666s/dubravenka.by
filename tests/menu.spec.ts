@@ -96,7 +96,7 @@ test.describe('DUBRAVENKA Menu Site', () => {
 
   test('grill opens cart with added items', async ({ page }) => {
     await page.locator('#home-preview .menu-item__add').first().click();
-    await page.locator('.bottom-nav [data-nav="cart"]').click();
+    await page.locator('#cart-toggle').click();
     await expect(page.locator('#cart-panel')).toHaveClass(/cart-panel--open/);
     await expect(page.locator('.cart-item__name').first()).toHaveText('Пепперони');
     await expect(page.locator('#cart-total')).toHaveText('24.90 руб');
