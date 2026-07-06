@@ -110,8 +110,6 @@
 
       if ($('#hero-title')) $('#hero-title').textContent = h.title;
 
-      if ($('#hero-divider')) $('#hero-divider').textContent = h.divider;
-
       if ($('#hero-cta-text')) $('#hero-cta-text').textContent = h.cta;
 
       const heroImg = $('#hero-image');

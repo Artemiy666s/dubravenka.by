@@ -16,6 +16,10 @@ test.describe('DUBRAVENKA Menu Site', () => {
   test('hero opens full menu page', async ({ page }) => {
     await page.locator('#hero-cta').click();
     await expect(page.locator('#view-fullmenu')).toHaveClass(/view--active/);
+    await page.locator('#fullmenu-back').click();
+    await expect(page.locator('#view-home')).toHaveClass(/view--active/);
+    await page.locator('#hero-title').click();
+    await expect(page.locator('#view-fullmenu')).toHaveClass(/view--active/);
     await expect(page.locator('#fullmenu-grid .section-header__title').first()).toHaveText('Пицца');
     await expect(page.locator('#fullmenu-grid .section-header__title').nth(1)).toHaveText('Напитки');
     await expect(page.locator('#fullmenu-grid .menu-item')).toHaveCount(31);
