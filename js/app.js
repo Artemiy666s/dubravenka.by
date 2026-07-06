@@ -781,33 +781,37 @@
 
 
 
+  function promoImageSrc(promo) {
+    const img = promo.image || '';
+    if (/\.(png|jpe?g|webp)$/i.test(img) || img.includes('/')) return img;
+    return `assets/svg/${img}.svg`;
+  }
+
+  function isPromoPhoto(promo) {
+    return /\.(png|jpe?g|webp)$/i.test(promo.image || '');
+  }
+
   function renderPromotions() {
 
     const container = $('#promotions-list');
 
-    container.innerHTML = DATA.promotions.map(promo => `
-
-      <div class="promo-banner">
-
+    container.innerHTML = DATA.promotions.map(promo => {
+      const photo = isPromoPhoto(promo);
+      const alt = [promo.title, promo.desc, promo.sub].filter(Boolean).join(' — ');
+      return `
+      <div class="promo-banner${photo ? ' promo-banner--photo' : ''}">
         <div class="promo-banner__image">
-
-          <img src="assets/svg/${promo.image}.svg" alt="${promo.title}" width="360" height="200" loading="lazy">
-
+          <img src="${promoImageSrc(promo)}" alt="${alt}" width="360" height="200" loading="lazy" decoding="async">
         </div>
-
+        ${photo ? '' : `
         <div class="promo-banner__content">
-
           <h3 class="promo-banner__title">${promo.title}</h3>
-
           <p class="promo-banner__desc">${promo.desc}</p>
-
           <p class="promo-banner__sub">${promo.sub}</p>
-
-        </div>
-
+        </div>`}
       </div>
-
-    `).join('');
+    `;
+    }).join('');
 
   }
 

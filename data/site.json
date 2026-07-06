@@ -134,21 +134,21 @@
       "title": "Пивной вечер",
       "desc": "−15% на всё пиво с 17:00 до 20:00",
       "sub": "по будням",
-      "image": "promo-beer"
+      "image": "assets/images/promotions/promo-beer.jpg"
     },
     {
       "id": "birthday",
       "title": "День рождения",
       "desc": "Скидка 10%",
       "sub": "за 2 дня до и после",
-      "image": "promo-cake"
+      "image": "assets/images/promotions/promo-cake.jpg"
     },
     {
       "id": "happy-hour",
       "title": "Счастливые часы",
       "desc": "2+1=3 на разливное пиво",
       "sub": "ежедневно 14:00–16:00",
-      "image": "promo-mugs"
+      "image": "assets/images/promotions/promo-mugs.jpg"
     }
   ],
   "contacts": {

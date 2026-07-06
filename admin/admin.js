@@ -290,7 +290,7 @@
               ${field('Описание', `<textarea data-promo-field="desc">${esc(promo.desc)}</textarea>`)}
               <div class="field--row">
                 ${field('Подпись', `<input data-promo-field="sub" value="${esc(promo.sub)}">`)}
-                ${field('Картинка (SVG)', `<input data-promo-field="image" value="${esc(promo.image)}">`)}
+                ${field('Картинка', `<input data-promo-field="image" value="${esc(promo.image)}">`)}
               </div>
             </div>
           `).join('')}
