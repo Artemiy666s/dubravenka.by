@@ -3,6 +3,7 @@
 
   const MENU_CATS = ['pizza', 'hot', 'fry', 'salads'];
   const DRINK_KEYS = ['beer', 'kvass', 'soft'];
+  const TOKEN_KEY = 'dubravenka_admin_token';
   const SECTION_TITLES = {
     hero: 'Главная',
     menu: 'Меню',
@@ -19,6 +20,31 @@
   let menuTab = 'pizza';
 
   const $ = id => document.getElementById(id);
+
+  function getStoredToken() {
+    try {
+      return sessionStorage.getItem(TOKEN_KEY) || '';
+    } catch {
+      return '';
+    }
+  }
+
+  function setStoredToken(token) {
+    try {
+      if (token) sessionStorage.setItem(TOKEN_KEY, token);
+      else sessionStorage.removeItem(TOKEN_KEY);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function authHeaders(extra = {}) {
+    const token = getStoredToken();
+    return {
+      ...(token ? { 'X-Admin-Token': token } : {}),
+      ...extra,
+    };
+  }
 
   function esc(s) {
     return String(s ?? '')
@@ -48,7 +74,7 @@
   async function api(path, options = {}) {
     const res = await fetch(path, {
       credentials: 'same-origin',
-      headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+      headers: authHeaders({ 'Content-Type': 'application/json', ...(options.headers || {}) }),
       ...options,
     });
     const data = await res.json().catch(() => ({}));
@@ -439,6 +465,7 @@
     const res = await fetch('/api/admin/upload', {
       method: 'POST',
       credentials: 'same-origin',
+      headers: authHeaders(),
       body: form,
     });
     const data = await res.json();
@@ -583,6 +610,7 @@
     $('save-btn').addEventListener('click', save);
     $('logout-btn').addEventListener('click', async () => {
       await api('/api/admin/logout', { method: 'POST' });
+      setStoredToken('');
       showLogin();
     });
   }
@@ -594,13 +622,15 @@
     err.hidden = true;
     if (btn) btn.disabled = true;
     try {
-      await api('/api/admin/login', {
+      const data = await api('/api/admin/login', {
         method: 'POST',
         body: JSON.stringify({ password: $('login-password').value }),
       });
+      if (data.token) setStoredToken(data.token);
       await initAdmin();
       showAdmin();
     } catch (e) {
+      setStoredToken('');
       err.textContent = e.message === 'Неверный пароль' || e.message === 'Bad request'
         ? 'Неверный пароль'
         : (e.message || 'Ошибка входа');
@@ -612,7 +642,14 @@
 
   checkSession().then(authed => {
     if (authed) {
-      initAdmin().then(showAdmin).catch(() => showLogin());
+      initAdmin().then(showAdmin).catch(() => {
+        setStoredToken('');
+        showLogin();
+      });
+    } else {
+      setStoredToken('');
     }
-  }).catch(() => {});
+  }).catch(() => {
+    setStoredToken('');
+  });
 })();

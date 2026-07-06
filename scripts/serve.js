@@ -43,6 +43,20 @@ function parseCookies(header) {
 }
 
 function readBody(req) {
+  const body = req.body;
+  if (body !== undefined && body !== null && body !== '') {
+    if (typeof body === 'object' && !Buffer.isBuffer(body)) {
+      return Promise.resolve(body);
+    }
+    const raw = Buffer.isBuffer(body) ? body.toString('utf8') : String(body);
+    if (!raw) return Promise.resolve({});
+    try {
+      return Promise.resolve(JSON.parse(raw));
+    } catch {
+      return Promise.reject(new Error('Invalid JSON'));
+    }
+  }
+
   return new Promise((resolve, reject) => {
     const chunks = [];
     req.on('data', chunk => chunks.push(chunk));
@@ -137,8 +151,8 @@ async function handleApi(req, res, url) {
       }
       const token = crypto.randomBytes(32).toString('hex');
       sessions.set(token, { expires: Date.now() + SESSION_TTL_MS });
-      sendJson(res, 200, { ok: true }, {
-        'Set-Cookie': `admin_token=${token}; HttpOnly; Path=/; SameSite=Strict; Max-Age=${SESSION_TTL_MS / 1000}`,
+      sendJson(res, 200, { ok: true, token }, {
+        'Set-Cookie': `admin_token=${token}; HttpOnly; Path=/; SameSite=Lax; Max-Age=${SESSION_TTL_MS / 1000}`,
       });
     } catch {
       sendJson(res, 400, { error: 'Bad request' });

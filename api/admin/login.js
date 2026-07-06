@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
       return;
     }
     const token = createSessionToken();
-    sendJson(res, 200, { ok: true }, { 'Set-Cookie': sessionCookie(token) });
+    sendJson(res, 200, { ok: true, token }, { 'Set-Cookie': sessionCookie(token) });
   } catch {
     sendJson(res, 400, { error: 'Bad request' });
   }

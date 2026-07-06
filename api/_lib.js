@@ -101,7 +101,16 @@ function isAuthed(req) {
 }
 
 function sessionCookie(token) {
-  return `admin_token=${token}; HttpOnly; Path=/; SameSite=Strict; Secure; Max-Age=${SESSION_TTL_MS / 1000}`;
+  const secure = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+  const parts = [
+    `admin_token=${token}`,
+    'HttpOnly',
+    'Path=/',
+    'SameSite=Lax',
+    `Max-Age=${SESSION_TTL_MS / 1000}`,
+  ];
+  if (secure) parts.push('Secure');
+  return parts.join('; ');
 }
 
 function clearSessionCookie() {
