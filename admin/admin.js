@@ -103,6 +103,7 @@
     return window.confirm(text);
   }
 
+  function setStatus(msg, type = '') {
     const el = $('save-status');
     el.textContent = msg;
     el.className = 'admin__status' + (type ? ` admin__status--${type}` : '');
